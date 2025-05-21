@@ -1,0 +1,68 @@
+version: '3.8'
+
+services:
+  mongo:
+    image: mongo:7.0.12
+    volumes:
+      - mongo_data:/data/db
+    networks:
+      - lms
+    ports:
+      - "27017:27017"
+    restart: unless-stopped
+
+  api:
+    build:
+      context: ./Backend
+      dockerfile: Dockerfile
+    restart: on-failure
+    env_file: ./Backend/.env
+    networks:
+      - lms
+    depends_on:
+      - mongo
+    ports:
+      - "8000:8000"
+    environment:
+      - MONGODB_URI=mongodb://mongo:27017/lms
+      - CORS_ORIGIN=https://auth.localhost
+
+  frontend:
+    build:
+      context: ./Frontend
+      dockerfile: Dockerfile.dev
+    restart: on-failure
+    networks:
+      - lms
+    depends_on:
+      - api
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
+      - REACT_APP_API_URL=https://api.auth.localhost/api
+      - CI=false
+      - GIT_CONFIG_PULL_REBASE=false
+
+  caddy:
+    image: caddy:2-alpine
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./caddy/Caddyfile:/etc/caddy/Caddyfile
+      - caddy_data:/data
+      - caddy_config:/config
+    networks:
+      - lms
+    depends_on:
+      - api
+      - frontend
+
+volumes:
+  mongo_data:
+  caddy_data:
+  caddy_config:
+networks:
+  lms:
+    driver: bridge

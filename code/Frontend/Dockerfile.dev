@@ -1,0 +1,16 @@
+FROM node:18-alpine
+
+WORKDIR /app
+
+COPY package*.json ./
+RUN npm install
+
+COPY . .
+
+EXPOSE 3000
+
+# Set CI to false to prevent treating warnings as errors
+ENV CI=false
+
+# Use the development server - this is more reliable for CRA
+CMD ["npm", "start"]

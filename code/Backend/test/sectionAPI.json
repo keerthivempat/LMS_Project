@@ -1,0 +1,87 @@
+{
+    "routes": [
+      {
+        "name": "Get Section by ID",
+        "method": "GET",
+        "endpoint": "/api/section/:sectionId",
+        "headers": {},
+        "body": {},
+        "response": "<Replace with actual response>"
+      },
+      {
+        "name": "Create Section",
+        "method": "POST",
+        "endpoint": "/api/course/:courseId/section",
+        "headers": { "Authorization": "Bearer <your_access_token>", "Content-Type": "application/json" },
+        "body": {
+          "name": "Introduction to AI",
+          "description": "This section covers the basics of AI, including history, real-world applications, and ethical considerations.",
+          "video": "https://youtube.com/example-video",
+          "assignment": {
+            "title": "AI Research Report",
+            "description": "Write a research report on the impact of AI in different industries.",
+            "dueDate": "2025-02-20T23:59:59.000Z"
+          },
+          "resources": [
+            {
+              "text": "AI Ethics Video",
+              "url": "https://example.com/ai-ethics-video"
+            },
+            {
+              "text": "AI Research Paper",
+              "url": "https://example.com/ai-research.pdf"
+            }
+          ]
+        },
+        "response": "<Replace with actual response>"
+      },
+      {
+        "name": "Update Section",
+        "method": "PUT",
+        "endpoint": "/api/section/:sectionId",
+        "headers": { "Authorization": "Bearer <your_access_token>", "Content-Type": "application/json" },
+        "body": {
+          "name": "Advanced AI",
+          "description": "Updated content covering deep learning and reinforcement learning.",
+          "video": "https://youtube.com/updated-ai-video"
+        },
+        "response": "<Replace with actual response>"
+      },
+      {
+        "name": "Delete Section",
+        "method": "DELETE",
+        "endpoint": "/api/section/:sectionId",
+        "headers": { "Authorization": "Bearer <your_access_token>" },
+        "body": {},
+        "response": "<Replace with actual response>"
+      },
+      {
+        "name": "Get Section Resources",
+        "method": "GET",
+        "endpoint": "/api/section/:sectionId/resources",
+        "headers": {},
+        "body": {},
+        "response": "<Replace with actual response>"
+      },
+      {
+        "name": "Add Resource to Section",
+        "method": "POST",
+        "endpoint": "/api/section/:sectionId/resource",
+        "headers": { "Authorization": "Bearer <your_access_token>", "Content-Type": "application/json" },
+        "body": {
+          "text": "New AI Research Paper",
+          "url": "https://example.com/new-ai-research.pdf"
+        },
+        "response": "<Replace with actual response>"
+      },
+      {
+        "name": "Delete Resource from Section",
+        "method": "DELETE",
+        "endpoint": "/api/section/:sectionId/resource/:resourceId",
+        "headers": { "Authorization": "Bearer <your_access_token>" },
+        "body": {},
+        "response": "<Replace with actual response>"
+      }
+    ]
+  }
+  

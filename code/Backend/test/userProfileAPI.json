@@ -1,0 +1,100 @@
+{
+    "routes": [
+        {
+            "name": "Get User Profile",
+            "method": "GET",
+            "endpoint": "/api/users/profile",
+            "headers": {
+                "Authorization": "Bearer <your_access_token>"
+            },
+            "body": {},
+            "response": {
+                "statusCode": 200,
+                "data": {
+                    "_id": "67a9c230f3243440e6345ad6",
+                    "name": "John Doe",
+                    "username": "johndoe",
+                    "email": "john@example.com",
+                    "organizations": [
+                        {
+                            "_id": "67aa1a1c737764c30d375cbe",
+                            "name": "Tech Academy",
+                            "description": "Leading technology education platform",
+                            "logo": "https://example.com/logo.png"
+                        }
+                    ],
+                    "courses": [
+                        {
+                            "_id": "67aa2659225b8d089628f35b",
+                            "name": "Introduction to AI",
+                            "description": "AI fundamentals course"
+                        }
+                    ]
+                },
+                "message": "User profile fetched successfully",
+                "success": true
+            }
+        },
+        {
+            "name": "Update Profile",
+            "method": "PATCH",
+            "endpoint": "/api/users/profile",
+            "headers": {
+                "Authorization": "Bearer <your_access_token>",
+                "Content-Type": "application/json"
+            },
+            "body": {
+                "name": "John Updated",
+                "username": "john.updated"
+            },
+            "response": {
+                "statusCode": 200,
+                "data": {
+                    "_id": "67a9c230f3243440e6345ad6",
+                    "name": "John Updated",
+                    "username": "john.updated",
+                    "email": "john@example.com"
+                },
+                "message": "Profile updated successfully",
+                "success": true
+            }
+        },
+        {
+            "name": "Change Password",
+            "method": "POST",
+            "endpoint": "/api/users/change-password",
+            "headers": {
+                "Authorization": "Bearer <your_access_token>",
+                "Content-Type": "application/json"
+            },
+            "body": {
+                "oldPassword": "OldPass123",
+                "newPassword": "NewPass456"
+            },
+            "response": {
+                "statusCode": 200,
+                "data": {},
+                "message": "Password changed successfully",
+                "success": true
+            }
+        },
+        {
+            "name": "Delete Account",
+            "method": "DELETE",
+            "endpoint": "/api/users/delete-account",
+            "headers": {
+                "Authorization": "Bearer <your_access_token>",
+                "Content-Type": "application/json"
+            },
+            "body": {
+                "password": "CurrentPass123"
+            },
+            "response": {
+                "statusCode": 200,
+                "data": {},
+                "message": "Account deleted successfully",
+                "success": true
+            }
+        }
+    ]
+} 

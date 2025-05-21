@@ -1,0 +1,236 @@
+{
+    "routes": [
+        {
+            "name": "Register User",
+            "method": "POST",
+            "endpoint": "/api/auth/register",
+            "headers": {
+                "Content-Type": "application/json"
+            },
+            "body": {
+                "name": "John Doe",
+                "username": "johnDoe1",
+                "email": "john@example.com",
+                "password": "Password123"
+            },
+            "response": {
+                "statusCode": 201,
+                "data": {
+                    "user": {
+                        "_id": "67a9c230f3243440e6345ad6",
+                        "name": "John Doe",
+                        "username": "johnDoe1",
+                        "email": "john@example.com",
+                        "role": "user",
+                        "organizations": [],
+                        "courses": [],
+                        "createdAt": "2025-02-10T09:09:04.925Z",
+                        "updatedAt": "2025-02-10T09:09:04.925Z",
+                        "__v": 0
+                    },
+                    "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YTljMjMwZjMyNDM0NDBlNjM0NWFkNiIsImVtYWlsIjoiam9obkBleGFtcGxlLmNvbSIsImlhdCI6MTczOTE3ODU0NSwiZXhwIjoxNzM5MjY0OTQ1fQ.bI_mJSNe5IS4tJdKxkRsZ05h1p01M-0UxPz3nQG1qc4",
+                    "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YTljMjMwZjMyNDM0NDBlNjM0NWFkNiIsImlhdCI6MTczOTE3ODU0NSwiZXhwIjoxNzQwMDQyNTQ1fQ.TvJVc8-ROgf8aufG7RsxIz0qJ_LLkY2buwTaBjeB2a0"
+                },
+                "message": "User registered successfully",
+                "success": true
+            }
+        },
+        {
+            "name": "Login User",
+            "method": "POST",
+            "endpoint": "/api/auth/login",
+            "headers": {
+                "Content-Type": "application/json"
+            },
+            "body": {
+                "email": "john@example.com",
+                "password": "Password123"
+            },
+            "response": {
+                "statusCode": 200,
+                "data": {
+                    "user": {
+                        "_id": "67a9c230f3243440e6345ad6",
+                        "name": "John Doe",
+                        "username": "johnDoe1",
+                        "email": "john@example.com",
+                        "role": "user",
+                        "organizations": [],
+                        "courses": [],
+                        "createdAt": "2025-02-10T09:09:04.925Z",
+                        "updatedAt": "2025-02-10T09:12:51.448Z",
+                        "__v": 0
+                    },
+                    "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YTljMjMwZjMyNDM0NDBlNjM0NWFkNiIsImVtYWlsIjoiam9obkBleGFtcGxlLmNvbSIsImlhdCI6MTczOTE3ODc3MSwiZXhwIjoxNzM5MjY1MTcxfQ.jcFWEHqbuMxawc41u91iJZ0LmvbdWzuHD1EVc3nOPE4",
+                    "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YTljMjMwZjMyNDM0NDBlNjM0NWFkNiIsImlhdCI6MTczOTE3ODc3MSwiZXhwIjoxNzQwMDQyNzcxfQ.dZ-ZxdKukXEzltWEfhlgoMCIJot3rvobrsUJUZuNV7g"
+                },
+                "message": "Logged in successfully",
+                "success": true
+            }
+        },
+        {
+            "name": "Logout User",
+            "method": "POST",
+            "endpoint": "/api/auth/logout",
+            "headers": {
+                "Authorization": "Bearer <your_access_token>"
+            },
+            "body": {},
+            "response": {
+                "statusCode": 200,
+                "data": {},
+                "message": "User logged out successfully",
+                "success": true
+            }
+        },
+        {
+            "name": "Refresh Tokens",
+            "method": "POST",
+            "endpoint": "/api/auth/refreshTokens",
+            "headers": {
+                "Authorization": "Bearer <your_refresh_token>"
+            },
+            "body": {
+                "refreshToken": "<your_refresh_token>"
+            },
+            "response": "<Replace with actual response>"
+        },
+        {
+            "name": "Get My Profile",
+            "method": "GET",
+            "endpoint": "/api/auth/me",
+            "headers": {
+                "Authorization": "Bearer <your_access_token>"
+            },
+            "body": {},
+            "response": {
+                "statusCode": 200,
+                "data": {
+                    "_id": "67a9c230f3243440e6345ad6",
+                    "name": "John Doe",
+                    "username": "johnDoe1",
+                    "email": "john@example.com",
+                    "role": "user",
+                    "organizations": [],
+                    "courses": [],
+                    "createdAt": "2025-02-10T09:09:04.925Z",
+                    "updatedAt": "2025-02-10T09:14:14.472Z",
+                    "__v": 0
+                },
+                "message": "User profile fetched successfully",
+                "success": true
+            }
+        },
+        {
+            "name": "Update Profile",
+            "method": "PUT",
+            "endpoint": "/api/auth/me",
+            "headers": {
+                "Authorization": "Bearer <your_access_token>",
+                "Content-Type": "application/json"
+            },
+            "body": {
+                "name": "John Updated",
+                "username": "johnUpdated1"
+            },
+            "response": {
+                "statusCode": 200,
+                "data": {
+                    "_id": "67a9c230f3243440e6345ad6",
+                    "name": "John Updated",
+                    "username": "johnUpdated1",
+                    "email": "john@example.com",
+                    "role": "user",
+                    "organizations": [],
+                    "courses": [],
+                    "createdAt": "2025-02-10T09:09:04.925Z",
+                    "updatedAt": "2025-02-10T09:26:18.013Z",
+                    "__v": 0
+                },
+                "message": "Profile updated successfully",
+                "success": true
+            }
+        },
+        {
+            "name": "Update Password",
+            "method": "POST",
+            "endpoint": "/api/auth/update-password",
+            "headers": {
+                "Authorization": "Bearer <your_access_token>",
+                "Content-Type": "application/json"
+            },
+            "body": {
+                "currentPassword": "Password123",
+                "newPassword": "NewPass456"
+            },
+            "response": {
+                "statusCode": 200,
+                "data": {},
+                "message": "Password changed successfully",
+                "success": true
+            }
+        },
+        {
+            "name": "Get User Role",
+            "method": "GET",
+            "endpoint": "/api/auth/role",
+            "headers": {
+                "Authorization": "Bearer <your_access_token>"
+            },
+            "body": {},
+            "response": {
+                "statusCode": 200,
+                "data": {
+                    "_id": "67a9c230f3243440e6345ad6",
+                    "role": "user"
+                },
+                "message": "User role fetched successfully",
+                "success": true
+            }
+        },
+        {
+            "name": "Get User Profile by ID",
+            "method": "GET",
+            "endpoint": "/api/auth/user/:id",
+            "headers": {
+                "Authorization": "Bearer <your_access_token>"
+            },
+            "body": {},
+            "response": {
+                "statusCode": 200,
+                "data": {
+                    "_id": "67a9c230f3243440e6345ad6",
+                    "name": "John Updated",
+                    "username": "johnUpdated1",
+                    "email": "john@example.com",
+                    "role": "user",
+                    "organizations": [],
+                    "courses": [],
+                    "createdAt": "2025-02-10T09:09:04.925Z",
+                    "updatedAt": "2025-02-10T09:29:36.113Z",
+                    "__v": 0
+                },
+                "message": "Other User profile fetched",
+                "success": true
+            }
+        },
+        {
+            "name": "Get User Role by ID",
+            "method": "GET",
+            "endpoint": "/api/auth/user/:id/role",
+            "headers": {
+                "Authorization": "Bearer <your_access_token>"
+            },
+            "body": {},
+            "response": {
+                "statusCode": 200,
+                "data": {
+                    "_id": "67a9c230f3243440e6345ad6",
+                    "role": "user"
+                },
+                "message": "User role fetched successfully",
+                "success": true
+            }
+        }
+    ]
+}

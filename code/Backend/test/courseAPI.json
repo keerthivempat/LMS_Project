@@ -1,0 +1,102 @@
+{
+    "routes": [
+        {
+            "name": "Get Course by ID",
+            "method": "GET",
+            "endpoint": "/api/course/:courseId",
+            "headers": {},
+            "body": {},
+            "response": {
+                "statusCode": 200,
+                "data": {
+                    "_id": "67aa2659225b8d089628f35b",
+                    "name": "Introduction to AI",
+                    "likes": 0,
+                    "description": "A beginner-friendly course on AI fundamentals, covering neural networks, deep learning, and practical ML applications.",
+                    "organization": "67aa1a1c737764c30d375cbe",
+                    "teachers": [
+                        "67aa22a976c250dba62ad70c"
+                    ],
+                    "students": [],
+                    "sections": [],
+                    "createdAt": "2025-02-10T16:16:25.118Z",
+                    "updatedAt": "2025-02-10T16:16:25.118Z",
+                    "slug": "introduction-to-ai",
+                    "__v": 0
+                },
+                "message": "Course details fetched successfully",
+                "success": true
+            }
+        },
+        {
+            "name": "Create Course",
+            "method": "POST",
+            "endpoint": "/api/org/:orgId/course",
+            "headers": {
+                "Authorization": "Bearer <your_access_token>",
+                "Content-Type": "application/json"
+            },
+            "body": {
+                "name": "Introduction to AI",
+                "description": "A beginner-friendly course on AI fundamentals, covering neural networks, deep learning, and practical ML applications.",
+                "teachers": [
+                    "67aa22a976c250dba62ad70c"
+                ],
+                "students": [],
+                "organization": "67aa1a1c737764c30d375cbe"
+            },
+            "response": {
+                "statusCode": 201,
+                "data": {
+                    "name": "Introduction to AI",
+                    "likes": 0,
+                    "description": "A beginner-friendly course on AI fundamentals, covering neural networks, deep learning, and practical ML applications.",
+                    "organization": "67aa1a1c737764c30d375cbe",
+                    "teachers": [
+                        "67aa22a976c250dba62ad70c"
+                    ],
+                    "students": [],
+                    "sections": [],
+                    "_id": "67aa2659225b8d089628f35b",
+                    "createdAt": "2025-02-10T16:16:25.118Z",
+                    "updatedAt": "2025-02-10T16:16:25.118Z",
+                    "slug": "introduction-to-ai",
+                    "__v": 0
+                },
+                "message": "Course created successfully",
+                "success": true
+            }
+        },
+        {
+            "name": "Get Course Sections",
+            "method": "GET",
+            "endpoint": "/api/course/:courseId/sections",
+            "headers": {},
+            "body": {},
+            "response": {
+                "statusCode": 200,
+                "data": [],
+                "message": "Course sections fetched successfully",
+                "success": true
+            }
+        },
+        {
+            "name": "Request to Join Course",
+            "method": "POST",
+            "endpoint": "/api/course/:courseId/join",
+            "headers": {
+                "Authorization": "Bearer <your_access_token>"
+            },
+            "body": {
+                "studentId": "67a9c230f3243440e6345ad6",
+                "reason": "I want to learn AI fundamentals and work on ML projects."
+            },
+            "response": {
+                "statusCode": 200,
+                "data": null,
+                "message": "Course join request sent successfully",
+                "success": true
+            }
+        }
+    ]
+}

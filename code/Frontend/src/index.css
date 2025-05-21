@@ -1,0 +1,33 @@
+
+@font-face {
+  font-family: "heading"; /* This is the name you'll use to refer to the font */
+  src: url("./assets/fonts/new.otf") format("opentype"); /* Path to your .ttf file */
+  font-weight: normal; /* You can specify different font weights if needed */
+  font-style: normal;  /* You can specify normal or italic style */
+}
+
+/* Apply the font to elements */
+body {
+  font-family: "heading", sans-serif;
+    overflow-x: hidden;
+    overflow-y: auto;
+  
+}
+
+body {
+  margin: 0;
+  font-family: "heading",sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+h1,h2,h3,h4,h5{
+  font-family: "heading";
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}

@@ -1,0 +1,79 @@
+{
+    "routes": [
+        {
+            "name": "Get Section Comments",
+            "method": "GET",
+            "endpoint": "/api/section/:sectionId/comments",
+            "headers": {
+                "Authorization": "Bearer <your_access_token>"
+            },
+            "body": {},
+            "response": {
+                "statusCode": 200,
+                "data": [
+                    {
+                        "_id": "67aa2659225b8d089628f35f",
+                        "user": {
+                            "_id": "67a9c230f3243440e6345ad6",
+                            "name": "John Doe",
+                            "username": "johndoe"
+                        },
+                        "text": "Great content!",
+                        "likes": 2,
+                        "likedBy": ["67a9c230f3243440e6345ad7", "67a9c230f3243440e6345ad8"],
+                        "createdAt": "2025-02-10T15:30:00.000Z"
+                    }
+                ],
+                "message": "Section comments fetched successfully",
+                "success": true
+            }
+        },
+        {
+            "name": "Add Section Comment",
+            "method": "POST",
+            "endpoint": "/api/section/:sectionId/comments",
+            "headers": {
+                "Authorization": "Bearer <your_access_token>",
+                "Content-Type": "application/json"
+            },
+            "body": {
+                "text": "This section was very helpful!"
+            },
+            "response": {
+                "statusCode": 201,
+                "data": {
+                    "_id": "67aa2659225b8d089628f35g",
+                    "user": {
+                        "_id": "67a9c230f3243440e6345ad6",
+                        "name": "John Doe",
+                        "username": "johndoe"
+                    },
+                    "text": "This section was very helpful!",
+                    "likes": 0,
+                    "likedBy": [],
+                    "createdAt": "2025-02-10T15:35:00.000Z"
+                },
+                "message": "Comment added successfully",
+                "success": true
+            }
+        },
+        {
+            "name": "Like Comment",
+            "method": "PUT",
+            "endpoint": "/api/section/:sectionId/comments/:commentId/like",
+            "headers": {
+                "Authorization": "Bearer <your_access_token>"
+            },
+            "body": {},
+            "response": {
+                "statusCode": 200,
+                "data": {
+                    "likes": 1,
+                    "liked": true
+                },
+                "message": "Comment liked successfully",
+                "success": true
+            }
+        }
+    ]
+} 

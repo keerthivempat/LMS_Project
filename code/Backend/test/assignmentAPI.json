@@ -1,0 +1,122 @@
+{
+    "routes": [
+        {
+            "name": "Create Assignment",
+            "method": "POST",
+            "endpoint": "/api/assignments",
+            "headers": {
+                "Authorization": "Bearer <your_access_token>",
+                "Content-Type": "application/json"
+            },
+            "body": {
+                "title": "Introduction to ML Assignment",
+                "description": "Complete the basic ML exercises",
+                "dueDate": "2025-03-15T23:59:59.999Z",
+                "assignmentLinks": ["https://example.com/ml-exercises"],
+                "sectionId": "67aa2659225b8d089628f35c"
+            },
+            "response": {
+                "statusCode": 201,
+                "data": {
+                    "_id": "67aa2659225b8d089628f35d",
+                    "title": "Introduction to ML Assignment",
+                    "description": "Complete the basic ML exercises",
+                    "dueDate": "2025-03-15T23:59:59.999Z",
+                    "assignmentLinks": ["https://example.com/ml-exercises"],
+                    "section": "67aa2659225b8d089628f35c",
+                    "submissions": {}
+                },
+                "message": "Assignment created successfully",
+                "success": true
+            }
+        },
+        {
+            "name": "Update Assignment",
+            "method": "PATCH",
+            "endpoint": "/api/assignments/:assignmentId",
+            "headers": {
+                "Authorization": "Bearer <your_access_token>",
+                "Content-Type": "application/json"
+            },
+            "body": {
+                "title": "Updated ML Assignment",
+                "description": "Updated exercises",
+                "dueDate": "2025-03-20T23:59:59.999Z"
+            },
+            "response": {
+                "statusCode": 200,
+                "data": {
+                    "_id": "67aa2659225b8d089628f35d",
+                    "title": "Updated ML Assignment",
+                    "description": "Updated exercises",
+                    "dueDate": "2025-03-20T23:59:59.999Z"
+                },
+                "message": "Assignment updated successfully",
+                "success": true
+            }
+        },
+        {
+            "name": "Delete Assignment",
+            "method": "DELETE",
+            "endpoint": "/api/assignments/:assignmentId",
+            "headers": {
+                "Authorization": "Bearer <your_access_token>"
+            },
+            "body": {},
+            "response": {
+                "statusCode": 200,
+                "data": {},
+                "message": "Assignment deleted successfully",
+                "success": true
+            }
+        },
+        {
+            "name": "Get Assignment Submissions",
+            "method": "GET",
+            "endpoint": "/api/assignments/:assignmentId/submissions",
+            "headers": {
+                "Authorization": "Bearer <your_access_token>"
+            },
+            "body": {},
+            "response": {
+                "statusCode": 200,
+                "data": [
+                    {
+                        "student": {
+                            "_id": "67a9c230f3243440e6345ad6",
+                            "name": "John Doe",
+                            "email": "john@example.com"
+                        },
+                        "submittedAt": "2025-03-14T10:30:00.000Z",
+                        "files": ["submission1.pdf"]
+                    }
+                ],
+                "message": "Submissions fetched successfully",
+                "success": true
+            }
+        },
+        {
+            "name": "Submit Assignment",
+            "method": "POST",
+            "endpoint": "/api/assignments/:assignmentId/submit",
+            "headers": {
+                "Authorization": "Bearer <your_access_token>",
+                "Content-Type": "multipart/form-data"
+            },
+            "body": {
+                "files": ["<file_upload>"]
+            },
+            "response": {
+                "statusCode": 201,
+                "data": {
+                    "student": "67a9c230f3243440e6345ad6",
+                    "assignment": "67aa2659225b8d089628f35d",
+                    "files": ["https://example.com/uploads/submission1.pdf"],
+                    "submittedAt": "2025-03-14T10:30:00.000Z"
+                },
+                "message": "Assignment submitted successfully",
+                "success": true
+            }
+        }
+    ]
+} 

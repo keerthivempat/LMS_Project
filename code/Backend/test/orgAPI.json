@@ -1,0 +1,228 @@
+{
+    "routes": [
+        {
+            "name": "Get All Organizations",
+            "method": "GET",
+            "endpoint": "/api/org",
+            "headers": {},
+            "body": {},
+            "response": {
+                "statusCode": 200,
+                "data": [
+                    {
+                        "contactDetails": {
+                            "email": "updated2@abcacademy.com",
+                            "phone": "987-654-3210",
+                            "address": "456 New Street 2"
+                        },
+                        "teachers": [],
+                        "_id": "67aa1a1c737764c30d375cbe",
+                        "name": "ABC Academy Updated 2",
+                        "description": "Updated description 2",
+                        "logo": "https://example.com/newlogo.png",
+                        "about": [],
+                        "createdAt": "2025-02-10T15:24:12.200Z",
+                        "updatedAt": "2025-02-10T15:37:26.230Z",
+                        "slug": "abc-academy-updated-2",
+                        "__v": 1,
+                        "students": [
+                            "67a9c230f3243440e6345ad6"
+                        ]
+                    }
+                ],
+                "message": "Organizations fetched successfully",
+                "success": true
+            }
+        },
+        {
+            "name": "Get Organization by ID",
+            "method": "GET",
+            "endpoint": "/api/org/:orgId",
+            "headers": {},
+            "body": {},
+            "response": {
+                "statusCode": 200,
+                "data": {
+                    "contactDetails": {
+                        "email": "updated2@abcacademy.com",
+                        "phone": "987-654-3210",
+                        "address": "456 New Street 2"
+                    },
+                    "teachers": [],
+                    "_id": "67aa1a1c737764c30d375cbe",
+                    "name": "ABC Academy Updated 2",
+                    "description": "Updated description 2",
+                    "logo": "https://example.com/newlogo.png",
+                    "about": [],
+                    "admins": [
+                        "67aa18a776c250dba62ad70a"
+                    ],
+                    "courses": [],
+                    "createdAt": "2025-02-10T15:24:12.200Z",
+                    "updatedAt": "2025-02-10T15:37:26.230Z",
+                    "slug": "abc-academy-updated-2",
+                    "__v": 1,
+                    "students": [
+                        "67a9c230f3243440e6345ad6"
+                    ]
+                },
+                "message": "Organization details fetched",
+                "success": true
+            }
+        },
+        {
+            "name": "Create Organization",
+            "method": "POST",
+            "endpoint": "/api/org",
+            "headers": {
+                "Authorization": "Bearer <your_access_token>",
+                "Content-Type": "application/json"
+            },
+            "body": {
+                "name": "ABC Academy",
+                "description": "An online learning platform",
+                "logo": "https://example.com/logo.png",
+                "about": [
+                    "ABC Academy is a platform that provides quality education for all.",
+                    "We offer a variety of courses in different subjects."
+                ],
+                "contactDetails": {
+                    "email": "contact@abcacademy.com",
+                    "phone": "123-456-7890",
+                    "address": "123 Learning Street"
+                }
+            },
+            "response": {
+                "statusCode": 201,
+                "data": {
+                    "name": "ABC Academy Updated",
+                    "description": "Updated description",
+                    "logo": "https://example.com/newlogo.png",
+                    "contactDetails": {
+                        "email": "updated@abcacademy.com",
+                        "phone": "987-654-3210",
+                        "address": "456 New Street"
+                    },
+                    "about": [],
+                    "admins": [
+                        "67aa18a776c250dba62ad70a"
+                    ],
+                    "courses": [],
+                    "_id": "67aa1a1c737764c30d375cbe",
+                    "createdAt": "2025-02-10T15:24:12.200Z",
+                    "updatedAt": "2025-02-10T15:24:12.200Z",
+                    "slug": "abc-academy-updated",
+                    "__v": 0
+                },
+                "message": "Organization created successfully",
+                "success": true
+            }
+        },
+        {
+            "name": "Update Organization",
+            "method": "PUT",
+            "endpoint": "/api/org/:orgId",
+            "headers": {
+                "Authorization": "Bearer <your_access_token>",
+                "Content-Type": "application/json"
+            },
+            "body": {
+                "name": "ABC Academy Updated 2",
+                "description": "Updated description 2",
+                "logo": "https://example.com/newlogo.png",
+                "about": [
+                    "Updated details about ABC Academy. 2",
+                    "New programs and courses have been added. 2"
+                ],
+                "contactDetails": {
+                    "email": "updated2@abcacademy.com",
+                    "phone": "987-654-3210",
+                    "address": "456 New Street 2"
+                }
+            },
+            "response": {
+                "statusCode": 200,
+                "data": {
+                    "contactDetails": {
+                        "email": "updated2@abcacademy.com",
+                        "phone": "987-654-3210",
+                        "address": "456 New Street 2"
+                    },
+                    "_id": "67aa1a1c737764c30d375cbe",
+                    "name": "ABC Academy Updated 2",
+                    "description": "Updated description 2",
+                    "logo": "https://example.com/newlogo.png",
+                    "about": [],
+                    "admins": [
+                        "67aa18a776c250dba62ad70a"
+                    ],
+                    "courses": [],
+                    "createdAt": "2025-02-10T15:24:12.200Z",
+                    "updatedAt": "2025-02-10T15:28:50.353Z",
+                    "slug": "abc-academy-updated-2",
+                    "__v": 0
+                },
+                "message": "Organization updated successfully",
+                "success": true
+            }
+        },
+        {
+            "name": "Get Organization Courses",
+            "method": "GET",
+            "endpoint": "/api/org/:orgId/courses",
+            "headers": {},
+            "body": {},
+            "response": "<Replace with actual response>"
+        },
+        {
+            "name": "Get Organization Members",
+            "method": "GET",
+            "endpoint": "/api/org/:orgId/members",
+            "headers": {
+                "Authorization": "Bearer <your_access_token>"
+            },
+            "body": {},
+            "response": {
+                "statusCode": 200,
+                "data": {
+                    "admins": [
+                        {
+                            "_id": "67aa18a776c250dba62ad70a",
+                            "name": "Tom",
+                            "email": "tom@example.com",
+                            "role": "super_admin"
+                        }
+                    ],
+                    "teachers": [],
+                    "students": [
+                        {
+                            "_id": "67a9c230f3243440e6345ad6",
+                            "name": "John Updated",
+                            "email": "john@example.com",
+                            "role": "user"
+                        }
+                    ]
+                },
+                "message": "Organization members fetched successfully",
+                "success": true
+            }
+        },
+        {
+            "name": "Request to Join Organization",
+            "method": "POST",
+            "endpoint": "/api/org/:orgId/join",
+            "headers": {
+                "Authorization": "Bearer <your_access_token>"
+            },
+            "body": {},
+            "response": {
+                "statusCode": 200,
+                "data": {
+                    "organization": "67aa1a1c737764c30d375cbe"
+                },
+                "message": "Join request sent successfully",
+                "success": true
+            }
+        }
+    ]
+}

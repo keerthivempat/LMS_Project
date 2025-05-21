@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "cloudinary": "^2.6.0",
+    "file-type": "^20.4.1",
+    "pdf-lib": "^1.17.1"
+  }
+}

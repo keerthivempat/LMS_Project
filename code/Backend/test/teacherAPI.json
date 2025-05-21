@@ -1,0 +1,145 @@
+{
+    "routes": [
+        {
+            "name": "Get Teacher Organizations",
+            "method": "GET",
+            "endpoint": "/api/teacher/organizations",
+            "headers": {
+                "Authorization": "Bearer <your_access_token>"
+            },
+            "body": {},
+            "response": {
+                "statusCode": 200,
+                "data": [
+                    {
+                        "_id": "67aa1a1c737764c30d375cbe",
+                        "name": "Tech Academy",
+                        "description": "Leading technology education platform",
+                        "logo": "https://example.com/tech-academy-logo.png",
+                        "contactDetails": {
+                            "email": "info@techacademy.com",
+                            "phone": "123-456-7890"
+                        }
+                    }
+                ],
+                "message": "Teacher organizations fetched successfully",
+                "success": true
+            }
+        },
+        {
+            "name": "Get Teacher Organization Courses",
+            "method": "GET",
+            "endpoint": "/api/teacher/organization-courses",
+            "headers": {
+                "Authorization": "Bearer <your_access_token>"
+            },
+            "body": {},
+            "response": {
+                "statusCode": 200,
+                "data": [
+                    {
+                        "_id": "67aa2659225b8d089628f35b",
+                        "name": "Introduction to AI",
+                        "description": "A beginner-friendly course on AI fundamentals",
+                        "organization": {
+                            "_id": "67aa1a1c737764c30d375cbe",
+                            "name": "Tech Academy",
+                            "description": "Leading technology education platform"
+                        }
+                    }
+                ],
+                "message": "Organization courses fetched successfully",
+                "success": true
+            }
+        },
+        {
+            "name": "Get Teacher Courses",
+            "method": "GET",
+            "endpoint": "/api/teacher/courses",
+            "headers": {
+                "Authorization": "Bearer <your_access_token>"
+            },
+            "body": {},
+            "response": {
+                "statusCode": 200,
+                "data": [
+                    {
+                        "_id": "67aa2659225b8d089628f35b",
+                        "name": "Introduction to AI",
+                        "description": "A beginner-friendly course",
+                        "likes": 0,
+                        "students": ["67a9c230f3243440e6345ad6"],
+                        "pendingStudents": [],
+                        "sections": ["67aa2659225b8d089628f35c"],
+                        "organization": {
+                            "_id": "67aa1a1c737764c30d375cbe",
+                            "name": "Tech Academy",
+                            "description": "Leading technology education platform"
+                        }
+                    }
+                ],
+                "message": "Teacher courses fetched successfully",
+                "success": true
+            }
+        },
+        {
+            "name": "Get Course Students",
+            "method": "GET",
+            "endpoint": "/api/teacher/courses/:courseId/students",
+            "headers": {
+                "Authorization": "Bearer <your_access_token>"
+            },
+            "body": {},
+            "response": {
+                "statusCode": 200,
+                "data": [
+                    {
+                        "_id": "67a9c230f3243440e6345ad6",
+                        "name": "John Doe",
+                        "username": "johndoe",
+                        "email": "john@example.com"
+                    }
+                ],
+                "message": "Course students fetched successfully",
+                "success": true
+            }
+        },
+        {
+            "name": "Get Pending Students",
+            "method": "GET",
+            "endpoint": "/api/teacher/courses/:courseId/pending-students",
+            "headers": {
+                "Authorization": "Bearer <your_access_token>"
+            },
+            "body": {},
+            "response": {
+                "statusCode": 200,
+                "data": [
+                    {
+                        "_id": "67a9c230f3243440e6345ad7",
+                        "name": "Jane Doe",
+                        "username": "janedoe",
+                        "email": "jane@example.com"
+                    }
+                ],
+                "message": "Pending students fetched successfully",
+                "success": true
+            }
+        },
+        {
+            "name": "Join Course",
+            "method": "POST",
+            "endpoint": "/api/teacher/courses/:courseId/join",
+            "headers": {
+                "Authorization": "Bearer <your_access_token>"
+            },
+            "body": {},
+            "response": {
+                "statusCode": 200,
+                "data": null,
+                "message": "Successfully joined the course",
+                "success": true
+            }
+        }        
+    ]
+} 

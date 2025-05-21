@@ -1,0 +1,290 @@
+{
+    "routes": [
+        {
+            "name": "Create Admin (Super Admin Only)",
+            "method": "POST",
+            "endpoint": "/api/v1/admin/create",
+            "headers": {
+                "Authorization": "Bearer <super_admin_access_token>"
+            },
+            "body": {
+                "email": "newadmin@example.com",
+                "organizationId": "65aa1a1c737764c30d375cbe"
+            },
+            "response": {
+                "statusCode": 201,
+                "data": {
+                    "_id": "67bb1a1c737764c30d375cbe",
+                    "user": {
+                        "_id": "67a9c230f3243440e6345ad6",
+                        "email": "newadmin@example.com"
+                    },
+                    "organization": "65aa1a1c737764c30d375cbe",
+                    "isActive": true
+                },
+                "message": "Admin created successfully",
+                "success": true
+            }
+        },
+        {
+            "name": "Get Admins by Organization (Super Admin Only)",
+            "method": "GET",
+            "endpoint": "/api/v1/admin/organization/65aa1a1c737764c30d375cbe",
+            "headers": {
+                "Authorization": "Bearer <super_admin_access_token>"
+            },
+            "body": {},
+            "response": {
+                "statusCode": 200,
+                "data": [
+                    {
+                        "_id": "67bb1a1c737764c30d375cbe",
+                        "user": {
+                            "_id": "67a9c230f3243440e6345ad6",
+                            "name": "Admin User",
+                            "email": "admin@example.com"
+                        },
+                        "organization": {
+                            "_id": "65aa1a1c737764c30d375cbe",
+                            "name": "Tech Academy"
+                        },
+                        "isActive": true
+                    }
+                ],
+                "message": "Admins retrieved successfully",
+                "success": true
+            }
+        },
+        {
+            "name": "Get Admin Dashboard",
+            "method": "GET",
+            "endpoint": "/api/v1/admin/dashboard/65aa1a1c737764c30d375cbe",
+            "headers": {
+                "Authorization": "Bearer <admin_access_token>"
+            },
+            "body": {},
+            "response": {
+                "statusCode": 200,
+                "data": {
+                    "organization": {
+                        "_id": "65aa1a1c737764c30d375cbe",
+                        "name": "Tech Academy",
+                        "description": "Leading technology education platform",
+                        "logoUrl": "https://example.com/logo.png",
+                        "contactEmail": "contact@techacademy.com"
+                    },
+                    "stats": {
+                        "coursesCount": 15,
+                        "teachersCount": 8,
+                        "studentsCount": 120
+                    },
+                    "recentEnrollments": [
+                        {
+                            "_id": "67cc1a1c737764c30d375cbe",
+                            "user": {
+                                "_id": "67a9c230f3243440e6345ad6",
+                                "name": "John Doe",
+                                "email": "john@example.com"
+                            },
+                            "course": {
+                                "_id": "67dd1a1c737764c30d375cbe",
+                                "title": "Introduction to AI"
+                            },
+                            "createdAt": "2023-12-01T10:30:00Z"
+                        }
+                    ]
+                },
+                "message": "Admin dashboard data retrieved successfully",
+                "success": true
+            }
+        },
+        {
+            "name": "Get Organization Teachers",
+            "method": "GET",
+            "endpoint": "/api/v1/admin/teachers/65aa1a1c737764c30d375cbe",
+            "headers": {
+                "Authorization": "Bearer <admin_access_token>"
+            },
+            "body": {},
+            "response": {
+                "statusCode": 200,
+                "data": [
+                    {
+                        "_id": "67a9c230f3243440e6345ad6",
+                        "name": "John Teacher",
+                        "email": "john.teacher@example.com"
+                    }
+                ],
+                "message": "Organization teachers retrieved successfully",
+                "success": true
+            }
+        },
+        {
+            "name": "Add Teacher to Organization",
+            "method": "POST",
+            "endpoint": "/api/v1/admin/teacher",
+            "headers": {
+                "Authorization": "Bearer <admin_access_token>"
+            },
+            "body": {
+                "email": "newteacher@example.com",
+                "organizationId": "65aa1a1c737764c30d375cbe"
+            },
+            "response": {
+                "statusCode": 200,
+                "data": {
+                    "user": {
+                        "_id": "67a9c230f3243440e6345ad7",
+                        "email": "newteacher@example.com",
+                        "role": "teacher"
+                    }
+                },
+                "message": "Teacher added to organization successfully",
+                "success": true
+            }
+        },
+        {
+            "name": "Get Pending Courses",
+            "method": "GET",
+            "endpoint": "/api/v1/admin/pending-courses/65aa1a1c737764c30d375cbe",
+            "headers": {
+                "Authorization": "Bearer <admin_access_token>"
+            },
+            "body": {},
+            "response": {
+                "statusCode": 200,
+                "data": [
+                    {
+                        "_id": "67dd1a1c737764c30d375cbe",
+                        "title": "New AI Course",
+                        "description": "Advanced AI concepts",
+                        "status": "pending",
+                        "teacher": {
+                            "_id": "67a9c230f3243440e6345ad6",
+                            "name": "John Teacher",
+                            "email": "john.teacher@example.com"
+                        },
+                        "createdAt": "2023-12-01T10:30:00Z"
+                    }
+                ],
+                "message": "Pending courses retrieved successfully",
+                "success": true
+            }
+        },
+        {
+            "name": "Update Course Status",
+            "method": "PATCH",
+            "endpoint": "/api/v1/admin/course/67dd1a1c737764c30d375cbe/status",
+            "headers": {
+                "Authorization": "Bearer <admin_access_token>"
+            },
+            "body": {
+                "status": "approved",
+                "feedback": "Course looks good, approved with minor suggestions"
+            },
+            "response": {
+                "statusCode": 200,
+                "data": {
+                    "_id": "67dd1a1c737764c30d375cbe",
+                    "title": "New AI Course",
+                    "status": "approved",
+                    "adminFeedback": "Course looks good, approved with minor suggestions"
+                },
+                "message": "Course approved successfully",
+                "success": true
+            }
+        },
+        {
+            "name": "Get Organization Students",
+            "method": "GET",
+            "endpoint": "/api/v1/admin/students/65aa1a1c737764c30d375cbe",
+            "headers": {
+                "Authorization": "Bearer <admin_access_token>"
+            },
+            "body": {},
+            "response": {
+                "statusCode": 200,
+                "data": [
+                    {
+                        "_id": "67a9c230f3243440e6345ad8",
+                        "name": "Jane Student",
+                        "email": "jane.student@example.com",
+                        "createdAt": "2023-11-15T08:45:00Z"
+                    }
+                ],
+                "message": "Organization students retrieved successfully",
+                "success": true
+            }
+        },
+        {
+            "name": "Get Enrollment Requests",
+            "method": "GET",
+            "endpoint": "/api/v1/admin/enrollment-requests/65aa1a1c737764c30d375cbe",
+            "headers": {
+                "Authorization": "Bearer <admin_access_token>"
+            },
+            "body": {},
+            "response": {
+                "statusCode": 200,
+                "data": [
+                    {
+                        "_id": "67ee1a1c737764c30d375cbe",
+                        "user": {
+                            "_id": "67a9c230f3243440e6345ad9",
+                            "name": "New Student",
+                            "email": "new.student@example.com"
+                        },
+                        "organization": "65aa1a1c737764c30d375cbe",
+                        "status": "pending",
+                        "createdAt": "2023-12-02T09:15:00Z"
+                    }
+                ],
+                "message": "Student enrollment requests retrieved successfully",
+                "success": true
+            }
+        },
+        {
+            "name": "Update Enrollment Status",
+            "method": "PATCH",
+            "endpoint": "/api/v1/admin/enrollment-request/67ee1a1c737764c30d375cbe/status",
+            "headers": {
+                "Authorization": "Bearer <admin_access_token>"
+            },
+            "body": {
+                "status": "approved"
+            },
+            "response": {
+                "statusCode": 200,
+                "data": {
+                    "_id": "67ee1a1c737764c30d375cbe",
+                    "status": "approved"
+                },
+                "message": "Enrollment request approved successfully",
+                "success": true
+            }
+        },
+        {
+            "name": "Invite Students to Course",
+            "method": "POST",
+            "endpoint": "/api/v1/admin/invite-students-to-course",
+            "headers": {
+                "Authorization": "Bearer <admin_access_token>"
+            },
+            "body": {
+                "organizationId": "65aa1a1c737764c30d375cbe",
+                "courseId": "67dd1a1c737764c30d375cbe"
+            },
+            "response": {
+                "statusCode": 200,
+                "data": {
+                    "total": 5,
+                    "sent": 5,
+                    "failed": 0,
+                    "failedEmails": []
+                },
+                "message": "Course invitations sent to organization students",
+                "success": true
+            }
+        }
+    ]
+}

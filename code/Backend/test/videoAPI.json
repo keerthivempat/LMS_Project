@@ -1,0 +1,98 @@
+{
+    "routes": [
+        {
+            "name": "Add Video",
+            "method": "POST",
+            "endpoint": "/api/videos",
+            "headers": {
+                "Authorization": "Bearer <your_access_token>",
+                "Content-Type": "application/json"
+            },
+            "body": {
+                "title": "Introduction to Machine Learning",
+                "url": "https://example.com/video/intro-ml",
+                "sectionId": "67aa2659225b8d089628f35c"
+            },
+            "response": {
+                "statusCode": 201,
+                "data": {
+                    "_id": "67aa2659225b8d089628f35e",
+                    "title": "Introduction to Machine Learning",
+                    "url": "https://example.com/video/intro-ml",
+                    "section": "67aa2659225b8d089628f35c",
+                    "comments": []
+                },
+                "message": "Video added successfully",
+                "success": true
+            }
+        },
+        {
+            "name": "Get Video Details",
+            "method": "GET",
+            "endpoint": "/api/videos/:videoId",
+            "headers": {
+                "Authorization": "Bearer <your_access_token>"
+            },
+            "body": {},
+            "response": {
+                "statusCode": 200,
+                "data": {
+                    "_id": "67aa2659225b8d089628f35e",
+                    "title": "Introduction to Machine Learning",
+                    "url": "https://example.com/video/intro-ml",
+                    "section": {
+                        "_id": "67aa2659225b8d089628f35c",
+                        "name": "Introduction",
+                        "course": {
+                            "_id": "67aa2659225b8d089628f35b",
+                            "name": "Machine Learning Course",
+                            "teachers": ["67a9c230f3243440e6345ad6"],
+                            "students": ["67a9c230f3243440e6345ad7"]
+                        }
+                    },
+                    "comments": []
+                },
+                "message": "Video details fetched successfully",
+                "success": true
+            }
+        },
+        {
+            "name": "Update Video",
+            "method": "PATCH",
+            "endpoint": "/api/videos/:videoId",
+            "headers": {
+                "Authorization": "Bearer <your_access_token>",
+                "Content-Type": "application/json"
+            },
+            "body": {
+                "title": "Updated: Intro to ML",
+                "url": "https://example.com/video/updated-intro-ml"
+            },
+            "response": {
+                "statusCode": 200,
+                "data": {
+                    "_id": "67aa2659225b8d089628f35e",
+                    "title": "Updated: Intro to ML",
+                    "url": "https://example.com/video/updated-intro-ml"
+                },
+                "message": "Video updated successfully",
+                "success": true
+            }
+        },
+        {
+            "name": "Delete Video",
+            "method": "DELETE",
+            "endpoint": "/api/videos/:videoId",
+            "headers": {
+                "Authorization": "Bearer <your_access_token>"
+            },
+            "body": {},
+            "response": {
+                "statusCode": 200,
+                "data": {},
+                "message": "Video deleted successfully",
+                "success": true
+            }
+        }
+    ]
+} 
